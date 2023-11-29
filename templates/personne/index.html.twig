@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block title %} Personne{% endblock %}
+{% block body %}
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Téléphone</th>
+                <th>Date de Naissance</th>
+                <th>Job</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for personne in personnes %}
+                <tr>
+                    <td>{{ personne.nom }}</td>
+                    <td>{{ personne.prenom }}</td>
+                    <td>{{ personne.telephone }}</td>
+                    <td>{{ personne.DateDeNaissance ? personne.DateDeNaissance|date('Y-m-d') : 'N/A' }}</td>
+                    <td>{{ personne.job ?? 'N/A' }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
