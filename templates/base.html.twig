@@ -36,9 +36,9 @@
         {% block body %}{% endblock %}
         <footer class="mt-auto bg-slate-100">
             <div class="p-5 flex justify-between">
-                <p> <i class="fas fa-heart text-red-600"> <a class="underline hover:text-blue-600" href="https://symfonycasts.com/">SymfonyCasts</i></a></p>
-                <p><i class="fas fa-smile text-red-600"> <a href="{{ path('app_personne') }}" class="text-blue">Personne</a>
-                <p class="fas fa-star text-red-600"><a href="{{ path('app_about') }}" class="text-blue">À propos de nous</i></a></p>
+                <p> <i class="fas fa-heart text-red-600"> <a class="underline hover:text-blue-600" href="{{ path('app_homepage') }}">home</i></a></p>
+                <p><i class="fas fa-smile text-red-600"> <a href="{{ path('app_personnage_index') }}" class="text-blue">Personnage</a>
+                <p class="fas fa-star text-red-600"><a href="{{ path('app_about') }}" class="text-blue">À propos</i></a></p>
             </div>
         </footer>
     </body>

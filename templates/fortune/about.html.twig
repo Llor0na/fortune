@@ -1,7 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>A propos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            line-height: 1.6;
+            background: url('{{ asset('gif.gif') }}') fixed center center;
+            background-size: cover;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            position: relative;
+            animation: glitch 1s infinite linear alternate-reverse;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        a {
+            color: #00ffcc;
+            text-decoration: none;
+            border-bottom: 1px dashed #00ffcc;
+            transition: border-bottom 0.3s ease-in-out;
+        }
+
+        a:hover {
+            border-bottom: 1px solid #00ffcc;
+        }
+
+        @keyframes glitch {
+            2% {
+                transform: translateY(2px);
+            }
+            4% {
+                transform: translateY(-2px);
+            }
+            6% {
+                transform: translateY(1px);
+            }
+            8% {
+                transform: translateY(-1px);
+            }
+            10% {
+                transform: translateY(0);
+            }
+            12% {
+                transform: translateY(0);
+            }
+            13% {
+                letter-spacing: 6px;
+            }
+            14% {
+                letter-spacing: 2px;
+            }
+            15% {
+                letter-spacing: 4px;
+            }
+        }
+    </style>
 </head>
 <body>
 

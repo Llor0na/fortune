@@ -1,0 +1,15 @@
+
+
+{# templates/relation/afficher_relation.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Afficher la Relation{% endblock %}
+
+{% block body %}
+    <h1>Afficher la Relation</h1>
+
+    {% for livre in livres %}
+        <p>{{ livre.titre }} - {{ livre.auteur.nom }}</p>
+    {% endfor %}
+{% endblock %}
