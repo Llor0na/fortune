@@ -1,24 +1,27 @@
 <?php
 
-namespace App\DataFixtures;
+namespace App\DataFixtures\AppFixtures;
 
-use App\Entity\Auteur;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Faker\Factory;
+use App\Entity\Auteur;
 
-class AuteurFixture extends Fixture
+
+class AuteurFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $auteur1 = new Auteur();
-        $auteur1->setNom('Nom de l\'Auteur 1');
+        $faker = Factory::create('fr_FR'); // Utiliser le français comme langue pour Faker
 
-        $auteur2 = new Auteur();
-        $auteur2->setNom('Nom de l\'Auteur 2');
 
-        $manager->persist($auteur1);
-        $manager->persist($auteur2);
+        for ($i = 0; $i < 10; $i++) {
+            $auteur = new Auteur();
+            $auteur->setNom($faker->lastName());
 
+            $manager->persist($auteur);
+        }
         $manager->flush();
+
     }
 }

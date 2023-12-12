@@ -1,0 +1,26 @@
+{# templates/afficher.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Afficher les Livres{% endblock %}
+
+{% block body %}
+    <h1>Afficher les Livres</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Auteur</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for livre in livres %}
+                <tr>
+                    <td>{{ livre.titre }}</td>
+                    <td>{{ livre.auteur.nom }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

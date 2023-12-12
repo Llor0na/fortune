@@ -8,15 +8,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RelationController extends AbstractController
 {
-    #[Route('/relation', name: 'app_relation')]
+    #[Route('/livre', name: 'app_livre')]
     public function afficherRelation(LivreRepository $livreRepository): Response
     {
-        // Utilisez le repository pour récupérer les données nécessaires
-        $livres = $livreRepository->findAll();
-
-        // Vous pouvez faire quelque chose avec les données récupérées, par exemple les passer à un template Twig
-        return $this->render('relation/afficher_relation.html.twig', [
+            return $this->render('afficher.html.twig', [
             'livres' => $livres,
         ]);
     }
+    
 }
+ 

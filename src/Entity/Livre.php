@@ -13,9 +13,12 @@ class Livre
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'nom')]
+
     #[ORM\JoinColumn(nullable: false)]
     private ?Auteur $livres = null;
+
+    #[ORM\Column(length: 150)]
+    private ?string $titre = null;
 
     public function getId(): ?int
     {
@@ -30,6 +33,18 @@ class Livre
     public function setLivres(?Auteur $livres): static
     {
         $this->livres = $livres;
+
+        return $this;
+    }
+
+    public function getTitre(): ?string
+    {
+        return $this->titre;
+    }
+
+    public function setTitre(string $titre): static
+    {
+        $this->titre = $titre;
 
         return $this;
     }

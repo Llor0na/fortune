@@ -16,11 +16,14 @@ class Auteur
     private ?int $id = null;
 
     #[ORM\OneToMany(mappedBy: 'livres', targetEntity: Livre::class)]
-    private Collection $nom;
+    private Collection $livre;
+
+    #[ORM\Column(length: 100)]
+    private ?string $nom = null;
 
     public function __construct()
     {
-        $this->nom = new ArrayCollection();
+        $this->livre = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -31,29 +34,41 @@ class Auteur
     /**
      * @return Collection<int, Livre>
      */
-    public function getNom(): Collection
+    public function getlivre(): Collection
     {
-        return $this->nom;
+        return $this->livre;
     }
 
-    public function addNom(Livre $nom): static
+    public function addlivre(Livre $livre): static
     {
-        if (!$this->nom->contains($nom)) {
-            $this->nom->add($nom);
-            $nom->setLivres($this);
+        if (!$this->livre->contains($livre)) {
+            $this->livre->add($livre);
+            $livre->setLivres($this);
         }
 
         return $this;
     }
 
-    public function removeNom(Livre $nom): static
+    public function removelivre(Livre $livre): static
     {
-        if ($this->nom->removeElement($nom)) {
+        if ($this->livre->removeElement($livre)) {
             // set the owning side to null (unless already changed)
-            if ($nom->getLivres() === $this) {
-                $nom->setLivres(null);
+            if ($livre->getLivres() === $this) {
+                $livre->setLivres(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): static
+    {
+        $this->nom = $nom;
 
         return $this;
     }
