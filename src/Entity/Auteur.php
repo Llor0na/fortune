@@ -15,15 +15,15 @@ class Auteur
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToMany(mappedBy: 'livres', targetEntity: Livre::class)]
-    private Collection $livre;
+    #[ORM\OneToMany(mappedBy: 'livre', targetEntity: Livre::class)]
+    private Collection $livres;
 
     #[ORM\Column(length: 100)]
     private ?string $nom = null;
 
     public function __construct()
     {
-        $this->livre = new ArrayCollection();
+        $this->livres = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -34,16 +34,16 @@ class Auteur
     /**
      * @return Collection<int, Livre>
      */
-    public function getlivre(): Collection
+    public function getlivres(): Collection
     {
-        return $this->livre;
+        return $this->livres;
     }
 
     public function addlivre(Livre $livre): static
     {
-        if (!$this->livre->contains($livre)) {
-            $this->livre->add($livre);
-            $livre->setLivres($this);
+        if (!$this->livres->contains($livre)) {
+            $this->livres->add($livre);
+            $livre->setAuteur($this);
         }
 
         return $this;
@@ -51,10 +51,10 @@ class Auteur
 
     public function removelivre(Livre $livre): static
     {
-        if ($this->livre->removeElement($livre)) {
+        if ($this->livres->removeElement($livre)) {
             // set the owning side to null (unless already changed)
-            if ($livre->getLivres() === $this) {
-                $livre->setLivres(null);
+            if ($livres->getAuteur() === $this) {
+                $livres->setAuteur(null);
             }
         }
 

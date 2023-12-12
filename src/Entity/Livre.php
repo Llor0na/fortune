@@ -15,7 +15,7 @@ class Livre
 
 
     #[ORM\JoinColumn(nullable: false)]
-    private ?Auteur $livres = null;
+    private ?Auteur $livre = null;
 
     #[ORM\Column(length: 150)]
     private ?string $titre = null;
@@ -25,14 +25,14 @@ class Livre
         return $this->id;
     }
 
-    public function getLivres(): ?Auteur
+    public function getLivre(): ?Auteur
     {
-        return $this->livres;
+        return $this->livre;
     }
 
-    public function setLivres(?Auteur $livres): static
+    public function setLivre(?Auteur $livre): static
     {
-        $this->livres = $livres;
+        $this->livre = $livre;
 
         return $this;
     }
